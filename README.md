@@ -1,6 +1,12 @@
+<<<<<<< HEAD
 #Flashcard-Generator
 
 ##Overview
+=======
+# Flashcard-Generator
+
+## Overview
+>>>>>>> 602cb5108de433b74993e1ed7565d651f8b7d21a
 
 The backend for a basic flashcard application.
 The backend will essentially constitute an API that allows users to create two types of flashcards.

@@ -5,8 +5,7 @@ var ClozeCard = function(front, back){
 function ClozeCard (text, cloze) {
     this.text;
     this.cloze;
-    this.partial;
-    this.fullText;
+    this.partial = text.includes(cloze) ? text.replace(cloze, "...") : "Error";
     
 }
   ClozeCard.prototype.readCard = function() {
