@@ -6,7 +6,7 @@ var inquirer = require("inquirer");
 var fs = require("fs");
 
 var correct = 0;
-var incorrect;
+var incorrect = 0;
 var cardArray = [];
 var counter = 0;
 inquirer.prompt([
@@ -28,48 +28,49 @@ inquirer.prompt([
 })
 
 function basicPlay() {
-  var question = new basicCard(data[counter].front, data[counter].back);
-//   console.log(data[counter].front, data[counter].back);
-  if (counter < 5) {
-            inquirer.prompt([
-                {
-                  message: question.front + "\n",
-                  type: "input",
-                  name: "answer"
-              }
-          ]).then(function(answers) {
-                if (answers.answer.toLowerCase() == question.back.toLowerCase()) {
-                    correct++;
-                    counter++;
-                    console.log("Score: " + correct);
-                } else  {
-                    counter++;
-                    incorrect++;
-                }
-              basicPlay();
-            })
-        }
-  }
-
-function ClozePlay(){
-    var question = new ClozeCard(data[counter].text, data[counter].cloze);
-    if ( counter < questions.length - 1 ) {
-      inquirer.prompt([
-          {
-            name: "input",
-            message: question.partial + "\nAnswer: "
-          }
-        ]).then(function(answer) {
-            if (answer.input == question.cloze) {
-               console.log("That is Correct!\n");
+    var question = new basicCard(data[counter].front, data[counter].back);
+    //   console.log(data[counter].front, data[counter].back);
+    if (counter < 5) {
+        inquirer.prompt([
+            {
+                message: question.front + "\n",
+                type: "input",
+                name: "answer"
+            }
+        ]).then(function (answers) {
+            if (answers.answer.toLowerCase() == question.back.toLowerCase()) {
+                correct++;
+                counter++;
+                console.log("Correct: " + correct);
             } else {
-               console.log("No, the correct answer is " + question.cloze + "\n");
+                counter++;
+                incorrect++;
+                console.log("Incorrect: " + incorrect);
+            }
+
+        })
+    }
+}
+
+function ClozePlay() {
+    var question = new ClozeCard(data[counter].text, data[counter].cloze);
+    if (counter < questions.length - 1) {
+        inquirer.prompt([
+            {
+                name: "input",
+                message: question.partial + "\nAnswer: "
+            }
+        ]).then(function (answer) {
+            if (answer.input == question.cloze) {
+                console.log("That is Correct!\n");
+            } else {
+                console.log("No, the correct answer is " + question.cloze + "\n");
             }
             counter++;
             ClozePlay();
         });
     } else {
-      console.log('Try again!');
+        console.log('Try again!');
     }
 }
 
