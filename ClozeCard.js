@@ -1,11 +1,7 @@
-var ClozeCard = function(front, back){
-    this.front = front;
-    this.back = back;
-  }
 function ClozeCard (text, cloze) {
     this.text;
     this.cloze;
-    this.partial = text.includes(cloze) ? text.replace(cloze, "...") : "Error";
+    this.partial = text.replace(this.cloze, "...");
     
 }
   ClozeCard.prototype.readCard = function() {
@@ -13,3 +9,4 @@ function ClozeCard (text, cloze) {
   }
 
 module.exports = ClozeCard;
+

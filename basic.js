@@ -5,22 +5,22 @@ var questions = [
 
     },
     {
-        front: "second question",
-        back: "second answer"
+        front: "What animal sticks their butt in your face as a sign of friendship?",
+        back: "cat"
 
     },
     {
-        front: "third question",
-        back: "third answer"
+        front: "How many breeds are there of domesicated cat?",
+        back: "100"
 
     },
     {
-        front: "fourth question",
-        back: "fourth answer"
+        front: "How many mph can a cat run?",
+        back: "20 mph"
     },
     {
-        front: "fifth question",
-        back: "fifth answer"
+        front: "Can a cat taste sweetness?",
+        back: "no"
     }
 ]
 
