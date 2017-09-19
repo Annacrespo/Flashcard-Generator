@@ -1,11 +1,13 @@
 const basicCard = require("./basicCard.js");
 const ClozeCard = require("./ClozeCard.js");
 const inquirer = require("inquirer");
+const basic = require("./basic.json");
 const fs = require("fs");
 
 var correct;
 var incorrect;
 var cardArray = [];
+var counter = 0;
 
 console.log(basicCard);
 console.log(ClozeCard);
@@ -17,25 +19,48 @@ inquirer.prompt([
         name: "startGame"
     }
 ]).then(function (answers) {
-        var game = answers.startGame[0];
-        if (answers.startGame[0] === "Basic Card") {
-            basicPlay("basic-card.json");
-        } else if (answers.startGame[1] === "Cloze Card") {
-            basicPlay("ClozeCard.json");
-    } else if (answers.startGame[3] === "quit") {
-            quit();
+    if (answers.startGame == "Basic Card") {
+        basicPlay("basic.json");
+        console.log('index of 0');
+    } else if (answers.startGame == "Cloze Card") {
+        basicPlay("ClozeCard.json");
+        console.log('index of 1');
+    } else if (answers.startGame == "Quit") {
+        console.log('index of 2');
+        quit();
     }
 
-    });
+});
 
-function basicPlay(basicCard, x) {
-    fs.readFile(basic-card.json, "utf8", function(error, data) {
+function basicPlay(basic, x) {
+    fs.readFile(basic, "utf8", function (error, data) {
         if (error) {
             console.log("Error!");
+            console.log(data);
+        } 
+        else if (counter.length < 5) {
+            inquirer.prompt([{
+                message: basicCard[counter].front + "/n",
+                type: "input",
+                name: "answer"
+            }]).then(function (answers) {
+                if (answer.answer.toLowerCase() === question[i].back.toLowerCase()) {
+                    correct++;
+                    counter++;
+                    console.log("Score: " + score);
+                }
+            })
+        } else {
+            counter++;
+            incorrect++;
         }
+    
     })
+
+    
 }
 
 function quit() {
+    console.log('you just quit');
 
 }
