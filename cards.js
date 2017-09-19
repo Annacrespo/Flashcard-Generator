@@ -1,7 +1,8 @@
 const basicCard = require("./basicCard.js");
 const ClozeCard = require("./ClozeCard.js");
 const inquirer = require("inquirer");
-const basic = require("./basic.json");
+const basic = require("./basic.js");
+const clozeQuestions = require("./ClozeQuestions.js")
 const fs = require("fs");
 
 var correct;
@@ -20,27 +21,25 @@ inquirer.prompt([
     }
 ]).then(function (answers) {
     if (answers.startGame == "Basic Card") {
-        basicPlay("basic.json");
-        console.log('index of 0');
+        basicPlay("basic.js");
     } else if (answers.startGame == "Cloze Card") {
-        basicPlay("ClozeCard.json");
-        console.log('index of 1');
+        basicPlay("ClozeCard.js");
     } else if (answers.startGame == "Quit") {
-        console.log('index of 2');
-        quit();
+        // quit();
     }
 
-});
+})
 
 function basicPlay(basic, x) {
     fs.readFile(basic, "utf8", function (error, data) {
         if (error) {
             console.log("Error!");
-            console.log(data);
+            // console.log(data);
         } 
-        else if (counter.length < 5) {
+        else if (counter< 5) {
+            // console.log(data);
             inquirer.prompt([{
-                message: basicCard[counter].front + "/n",
+                message: data[counter].front + "/n",
                 type: "input",
                 name: "answer"
             }]).then(function (answers) {
@@ -57,10 +56,43 @@ function basicPlay(basic, x) {
     
     })
 
-    
-}
+};   
+// }
 
-function quit() {
-    console.log('you just quit');
+// function basicPlay() {
+//     var correct;
+//     var incorrect;
+//     var cardArray = [];
+//     for (let question of questions) {
 
-}
+//     }
+// }
+
+// function quit() {
+//     console.log('you just quit');
+
+// }
+
+// function ClozePlay(){
+//     var question = new ClozeCard(clozeQuestions[counter].text, clozeQuestions[counter].cloze);
+//     console.log(question);
+//     if ( i < questions.length - 1 ) {
+//       inquirer.prompt([
+//           {
+//             name: "input",
+//             message: question.partial + "\nAnswer: "
+//           }
+//         ]).then(function(answer) {
+//             if (answer.input == question.cloze) {
+//                console.log("YES that is Correct\n" + lineBreak);
+//             } else {
+//                console.log("No, the correct answer is: \n" + question.cloze + "\n" + lineBreak);
+//             }
+            
+//             counter++;
+//             ClozePlay();
+//         });
+//     } else {
+//       console.log('Try again!');
+//     }
+ 
