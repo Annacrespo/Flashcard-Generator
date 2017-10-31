@@ -21,7 +21,12 @@ var questions = [
     {
         front: "Can a cat taste sweetness?",
         back: "no"
+    },
+    {
+        front: "A cat has how many whiskers on average?",
+        back: "24"
     }
+    
 ]
 
 module.exports = questions;
